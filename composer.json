@@ -1,0 +1,20 @@
+{
+    "name": "farzinft/laravel-model-caching",
+    "description": "Simple Way Of Caching Laravel Eloquent Query Results",
+    "authors": [
+        {
+            "name": "farzin",
+            "email": "farzin.fthi@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Fthi\\ModelCaching\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.4",
+        "illuminate/support": "5.x.x",
+        "predis/predis": "^1.1"
+    }
+}

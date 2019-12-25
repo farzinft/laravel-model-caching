@@ -13,7 +13,8 @@ Require this package in your composer.json and run composer update (or run `comp
 
 You need to publish the config file for this package. This will add the file `config/model-caching.php`, where you can configure this package.
 
-    $ php artisan vendor:publish --provider="Fthi\ModelCaching\ServiceProvider" --tag=config
+    $ php artisan vendor:publish --provider="Fthi\ModelCaching\ServiceProvider"
+    
 
 
 ## Usage

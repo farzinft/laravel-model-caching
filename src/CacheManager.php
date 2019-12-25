@@ -9,14 +9,6 @@ class CacheManager
 
     public static $dontCache = false;
 
-    protected static $cachePrefix;
-
-
-    public function __construct()
-    {
-        static::$cachePrefix = config('model-caching.cache_prefix');
-    }
-
     public static function getFromCache($key, $sec, callable $callback)
     {
 
@@ -65,7 +57,7 @@ class CacheManager
 
     private static function getCacheKey($key)
     {
-        return static::$cachePrefix . $key;
+        return config('model-caching.cache_prefix') . $key;
     }
 
 }

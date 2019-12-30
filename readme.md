@@ -30,7 +30,8 @@ without cache:
 
      "$customers = Customer::with('books')->where(['status' => 1])->get()"
      
-and you want cache result 50 seconds, change cache_expire_time (in second) in model-caching.php, then:
+and you want cache result 50 seconds, change cache_expire_time (in second) in model-caching.php
+or inside your model define a public variable named $cacheExpireTime, then:
 
 with cache:
 

@@ -19,9 +19,10 @@ class ModelCaching
 
     public function __construct(Model $model)
     {
-        static::$cacheExpTime = config('model-caching.cache_expire_time');
+        static::$cacheExpTime = isset($model->cacheExpireTime) ? $model->cacheExpireTime : config('model-caching.cache_expire_time');
         $this->model = $model;
         $this->builder = $model->newQuery();
+
     }
 
     public function __call($method, $parameters)
@@ -56,8 +57,8 @@ class ModelCaching
 
     public function processParameters($params = [])
     {
-       return array_map(function($item) {
-            if($item instanceof \Closure) {
+        return array_map(function ($item) {
+            if (($item instanceof \Closure) || (is_array($item) && $item = array_values($item)[0] && $item instanceof \Closure)) {
                 $ref = new \ReflectionFunction($item);
                 return get_class($ref->getClosureThis()) . $ref->getStartLine() . $ref->getEndLine();
             }

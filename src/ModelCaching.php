@@ -58,7 +58,7 @@ class ModelCaching
     public function processParameters($params = [])
     {
         return array_map(function ($item) {
-            if (($item instanceof \Closure) || (is_array($item) && $item = array_values($item)[0] && $item instanceof \Closure)) {
+            if (($item instanceof \Closure) || (is_array($item) && array_values($item)[0] instanceof \Closure)) {
                 $ref = new \ReflectionFunction($item);
                 return get_class($ref->getClosureThis()) . $ref->getStartLine() . $ref->getEndLine();
             }

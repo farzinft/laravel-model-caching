@@ -31,7 +31,7 @@ class ModelCaching
         array_push($this->methods, $method);
         array_push($this->parameters, $this->processParameters($parameters));
 
-        $cacheKey = $this->getCacheKey();
+        $cacheKey = $this->model->getTable() .':'.$this->getCacheKey();
 
         return CacheManager::getFromCache($cacheKey, static::$cacheExpTime, function ($cacheManager) use ($method, $parameters) {
 
